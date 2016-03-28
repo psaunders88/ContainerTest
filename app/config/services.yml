@@ -1,0 +1,10 @@
+services:
+    # An example class
+    test_container_class:
+        class: PSaunders\Test\Test
+     
+    # A listener to check the listeners 
+    test_listener:
+        class: PSaunders\Listener\TestListener
+        tags:
+            - { name: kernel.event_listener, event: test_test, method: dispatched }
