@@ -26,6 +26,7 @@ class ProjectServiceContainer extends Container
         $this->services = array();
         $this->methodMap = array(
             'event_dispatcher' => 'getEventDispatcherService',
+            'second_test_listener' => 'getSecondTestListenerService',
             'test_container_class' => 'getTestContainerClassService',
             'test_listener' => 'getTestListenerService',
         );
@@ -54,8 +55,22 @@ class ProjectServiceContainer extends Container
         $this->services['event_dispatcher'] = $instance = new \Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher($this);
 
         $instance->addListenerService('test_test', array(0 => 'test_listener', 1 => 'dispatched'), 0);
+        $instance->addListenerService('test_test', array(0 => 'second_test_listener', 1 => 'dispatched'), 0);
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'second_test_listener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \PSaunders\Listener\SecondTestListener A PSaunders\Listener\SecondTestListener instance.
+     */
+    protected function getSecondTestListenerService()
+    {
+        return $this->services['second_test_listener'] = new \PSaunders\Listener\SecondTestListener();
     }
 
     /**

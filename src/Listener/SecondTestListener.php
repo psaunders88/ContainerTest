@@ -4,7 +4,7 @@ namespace PSaunders\Listener;
 
 use Symfony\Component\EventDispatcher\Event;
 
-class TestListener
+class SecondTestListener
 {
     /**
      * This event only exists to prove that listeners can be configured correctly

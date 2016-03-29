@@ -6,11 +6,9 @@ class Test
 {
     /**
      * Pointless test function
-     * 
-     * @return string
      */
     public function go()
     {
-        return 'BOOM!!!';
+        echo 'BOOM!!!'.PHP_EOL;
     }
 }

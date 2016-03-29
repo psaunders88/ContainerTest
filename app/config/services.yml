@@ -8,3 +8,8 @@ services:
         class: PSaunders\Listener\TestListener
         tags:
             - { name: kernel.event_listener, event: test_test, method: dispatched }
+
+    second_test_listener:
+        class: PSaunders\Listener\SecondTestListener
+        tags:
+            - { name: kernel.event_listener, event: test_test, method: dispatched }
