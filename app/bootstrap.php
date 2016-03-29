@@ -34,6 +34,15 @@ if (file_exists($file)) {
     $loader = new YamlFileLoader($container, new FileLocator(__DIR__));
     $loader->load(__DIR__.'/config/services.yml');
 
+    /**
+     * This is essential because otherwise the Compiler pass doesn't happen 
+     * and therefore events aren't loaded.
+     * 
+     * Also other features don't work without compiling like "parent services"
+     * according to here. 
+     * 
+     * http://symfony.com/doc/current/components/dependency_injection/compilation.html
+     */
     $container->compile();
     
     $dumper = new PhpDumper($container);
